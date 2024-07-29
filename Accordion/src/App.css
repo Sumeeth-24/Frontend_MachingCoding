@@ -1,13 +1,40 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .accordion {
     border: 2px solid black;
-    margin: 0.5rem 0;
+    margin: 0.5rem 2rem;
     padding: 0.5rem;
     position: relative;
+    display: flex;
+    align-items: center;
   }
-  
+  .accordion-content {
+    width: 100%;
+    cursor: pointer;
+}
+  .checkbox {
+    margin-right: 1rem;
+  }
   span {
     position: absolute;
     right: 2rem;
     cursor: pointer;
   }
+  button {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
   

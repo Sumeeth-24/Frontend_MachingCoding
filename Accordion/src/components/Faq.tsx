@@ -8,22 +8,35 @@ import data from '../data.json';
 
 const Faq = () => {
     const [openIndex, setOpenIndex] = useState(null);
+    const [checkedItems, setCheckedItems] = useState({});
 
     const handleAccordionClick = (index: number) => {
         setOpenIndex(prevIndex => (prevIndex === index ? null : index));
     };
 
+    const handleCheckboxChange = (index) => {
+        setCheckedItems(prevState => ({
+            ...prevState,
+            [index]: !prevState[index]
+        }));
+    };
+
+    const allChecked = data?.faqs.every((_, index) => checkedItems[index]);
+
     return (
         <div>
-            <h1>FAQ's</h1>
+            <h1 className='header'>FAQ's</h1>
             {data?.faqs.map((qna, index) => (
                 <Accordion 
                     key={index} 
                     qna={qna} 
                     isOpen={openIndex === index} 
                     onClick={() => handleAccordionClick(index)} 
+                    isChecked={checkedItems[index] || false}
+                    onCheckboxChange={() => handleCheckboxChange(index)}
                 />
             ))}
+             <button disabled={!allChecked}>Submit</button>
         </div>
     );
 }
