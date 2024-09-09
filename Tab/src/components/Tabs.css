@@ -1,0 +1,22 @@
+.tabs {
+    display: "flex";
+    margin-top: 20;
+}
+.tabs__container {
+    justify-content: center;
+    align-items: center;
+}
+.tabs__content {
+    width: 16rem;
+    height: 20rem;
+    border: 1px solid black;
+    border-top: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .active {
+    border-bottom: none;
+  }
+  
