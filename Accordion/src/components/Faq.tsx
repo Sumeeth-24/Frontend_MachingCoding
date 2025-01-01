@@ -17,7 +17,8 @@ const Faq = () => {
     const handleCheckboxChange = (index) => {
         setCheckedItems(prevState => ({
             ...prevState,
-            [index]: !prevState[index]    // { 0: true, 1: true };  prevState = { 1: true, 2: true }  [1]: !prevState[1]
+            [index]: !prevState[index]    // { 0: true, 1: true };  prevState = { 1: true, 2: true }  [1]: !prevState[1]  checkedItems = { 1: false, 2: true }
+
         }));
     };
 
