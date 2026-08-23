@@ -1,11 +1,155 @@
-.content {
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;    /* Centers vertically */
-  height: 100vh;          /* Ensures the container takes the full height of the viewport */
+/* ==========================================================
+   Main container
+   ========================================================== */
+
+.star-rating {
+  display: inline-flex;
+  align-items: center;
 }
 
-.gold {  
+
+/* ==========================================================
+   Star button
+   ==========================================================
+
+   We use <button> because it gives us:
+   - keyboard support
+   - focus support
+   - disabled support
+
+   But visually, we don't want a button box.
+   So we remove the default button styling.
+   ========================================================== */
+
+.star-button {
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+
   cursor: pointer;
-  color: gold;
+
+  /*
+   * Controls star size.
+   */
+  font-size: 40px;
+  line-height: 1;
+}
+
+
+/* ==========================================================
+   Hover
+   ==========================================================
+
+   Don't change the actual rating here.
+
+   React already changes --active-color to orange
+   while hovering.
+
+   This only gives a small visual effect.
+   ========================================================== */
+
+.star-button:hover .star {
+  transform: scale(1.05);
+}
+
+
+/* ==========================================================
+   Keyboard focus
+   ==========================================================
+
+   Important for accessibility.
+
+   When user reaches a star using Tab,
+   they can see which element is focused.
+   ========================================================== */
+
+.star-button:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+
+/* ==========================================================
+   Disabled
+   ========================================================== */
+
+.star-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+/* ==========================================================
+   THE STAR
+   ==========================================================
+
+   React gives us:
+
+   --fill: 0%
+   --fill: 50%
+   --fill: 100%
+
+   And:
+
+   --active-color: gold
+   OR
+   --active-color: orange
+
+   Example:
+
+   --fill: 50%
+   --active-color: gold
+
+   Result:
+
+   ★ half gold
+   ★ half gray
+   ========================================================== */
+
+.star {
+  display: inline-block;
+
+  /*
+   * Smooth little hover animation.
+   */
+  transition: transform 0.1s ease;
+
+  /*
+   * Create the fill.
+
+   * LEFT side:
+     active color
+
+   * RIGHT side:
+     gray
+
+   Example:
+
+   --fill = 50%
+
+   gold | gold | gray | gray
+   <-------->
+      50%
+   */
+  background: linear-gradient(
+    to right,
+    var(--active-color) var(--fill),
+    #d3d3d3 var(--fill)
+  );
+
+  /*
+   * Show the background only
+   * inside the ★ character.
+   */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /*
+   * Make the actual text transparent
+   * so the gradient becomes visible.
+   */
+  -webkit-text-fill-color: transparent;
 }

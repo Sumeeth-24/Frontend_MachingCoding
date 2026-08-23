@@ -1,13 +1,30 @@
-import './App.css';
-import StarRating from './components/StarRating'
-
+import { useState } from "react";
+import StarRating from "./components/StarRating";
+import "./App.css"
 
 const App = () => {
-  return (
-    <div className='content'>
-      <StarRating starCount={10}/>
-    </div>
-  )
-}
+  const [rating, setRating] =
+    useState(3);
 
-export default App
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <StarRating
+        max={5}
+        value={rating}
+        onChange={setRating}
+        precision={0.5}
+        allowClear
+        label="Rate this product"
+      />
+    </div>
+  );
+};
+
+export default App;
