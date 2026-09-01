@@ -1,22 +1,93 @@
-.tabs {
-    display: "flex";
-    margin-top: 20;
-}
-.tabs__container {
-    justify-content: center;
-    align-items: center;
-}
-.tabs__content {
-    width: 16rem;
-    height: 20rem;
-    border: 1px solid black;
-    border-top: none;
+html,
+body,
+#root {
+     margin: 0;
+     width: 100%;
+     min-height: 100%; 
+ }
+
+.container { 
+    min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-  }
-  
-  .active {
-    border-bottom: none;
-  }
-  
+    align-items: center;
+    background: #000; 
+}
+
+/* Tabs wrapper */
+.tabs {
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  border-radius: 8px; 
+  overflow: hidden;
+}
+
+/*
+ * Container containing all tab buttons.
+ */
+.tabsList {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  gap: 4px;
+}
+
+/*
+ * Individual tab button.
+ *
+ * Using a real <button> instead of a <div>
+ * gives us keyboard accessibility by default.
+ */
+.tab {
+  border: none;
+  background: transparent;
+
+  padding: 12px 20px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+/*
+ * Active tab.
+ */
+.tab.active {
+  border-bottom: 3px solid #000;
+  font-weight: 600;
+}
+
+/*
+ * Disabled tab.
+ */
+.tab:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/*
+ * Keyboard focus.
+
+ * :focus-visible means the focus outline is primarily
+ * shown when navigating with keyboard.
+ */
+.tab:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/*
+ * Content area.
+ */
+.tabPanel {
+  padding: 24px;
+}
+
+/*
+ * Make keyboard focus on the panel visible.
+ */
+.tabPanel:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
