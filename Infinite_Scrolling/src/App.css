@@ -1,14 +1,29 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap");
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html { font-size: 62.85%; font-family: "Cormorant Garamond", serif; }
+
+h1 {
+  font-size: 3.2em;
+  font-family: "Cormorant Garamond", serif;
+  text-transform: uppercase;
   text-align: center;
+  margin: 5rem auto;
 }
 
-.card {
-  padding: 2em;
-}
+#root { max-width: 1280px; margin: 0 auto; padding: 2rem; text-align: center; }
 
-.read-the-docs {
-  color: #888;
+@media (prefers-color-scheme: light) {
+  :root { color: #213547; background-color: #ffffff; }
 }
